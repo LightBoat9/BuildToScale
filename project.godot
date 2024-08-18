@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Built To Scale"
+run/main_scene="res://ui/main_menu/main_menu.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalAudio="*res://singletons/global_audio.tscn"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=576
+window/stretch/mode="canvas_items"
+
+[global_group]
+
+props=""
+interface=""
+top_level=""
+allowed_areas=""
+
+[gui]
+
+timers/tooltip_delay_sec=0.1
+
+[physics]
+
+2d/default_gravity=384.0
+2d/solver/contact_recycle_radius=0.1
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

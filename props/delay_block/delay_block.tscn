@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b17o77ok268s"]
+
+[ext_resource type="Script" path="res://props/delay_block/delay_block.gd" id="1_mgw00"]
+[ext_resource type="Texture2D" uid="uid://ctnr473ndg4hq" path="res://props/delay_block/delay_block.png" id="2_k05o8"]
+[ext_resource type="AudioStream" uid="uid://da8g6poo1ybo5" path="res://props/impact.wav" id="3_k34rl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo2bx"]
+resource_local_to_scene = true
+size = Vector2(14, 14)
+
+[node name="DelayBlock" type="RigidBody2D" groups=["props"]]
+contact_monitor = true
+max_contacts_reported = 16
+script = ExtResource("1_mgw00")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_k05o8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eo2bx")
+
+[node name="AudioImpact" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_k34rl")
+max_distance = 1024.0

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c236wy5m0vkue"]
+
+[ext_resource type="Script" path="res://props/quick_block/quick_block.gd" id="1_wguof"]
+[ext_resource type="Texture2D" uid="uid://c6y8s530erkqu" path="res://props/quick_block/quick_block.png" id="2_65i7s"]
+[ext_resource type="AudioStream" uid="uid://da8g6poo1ybo5" path="res://props/impact.wav" id="3_k7jq4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2exej"]
+friction = 0.8
+bounce = 0.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo2bx"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="QuickBlock" type="RigidBody2D" groups=["props"]]
+physics_material_override = SubResource("PhysicsMaterial_2exej")
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 16
+script = ExtResource("1_wguof")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_65i7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eo2bx")
+
+[node name="AudioImpact" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_k7jq4")
+max_distance = 1024.0

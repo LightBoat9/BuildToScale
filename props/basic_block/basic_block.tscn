@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://vms86ws5ls3q"]
+
+[ext_resource type="Texture2D" uid="uid://cbopg8d5khf0k" path="res://props/basic_block/basic_block.png" id="1_ia0yu"]
+[ext_resource type="Script" path="res://props/basic_block/basic_block.gd" id="1_quxvh"]
+[ext_resource type="AudioStream" uid="uid://da8g6poo1ybo5" path="res://props/impact.wav" id="3_dm3t8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo2bx"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="BasicBlock" type="RigidBody2D" groups=["props"]]
+contact_monitor = true
+max_contacts_reported = 16
+script = ExtResource("1_quxvh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ia0yu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eo2bx")
+
+[node name="AudioImpact" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dm3t8")
+max_distance = 512.0

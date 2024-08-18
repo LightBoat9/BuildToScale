@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4uxrfu6jhcvx"]
+
+[ext_resource type="Script" path="res://props/circle_block/circle_block.gd" id="1_51koj"]
+[ext_resource type="Texture2D" uid="uid://diagnyqsqe3xy" path="res://props/circle_block/circle_block.png" id="2_wr12p"]
+[ext_resource type="AudioStream" uid="uid://da8g6poo1ybo5" path="res://props/impact.wav" id="3_pumxb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4chl1"]
+friction = 0.8
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwiy4"]
+radius = 8.0
+
+[node name="CircleBlock" type="RigidBody2D" groups=["props"]]
+physics_material_override = SubResource("PhysicsMaterial_4chl1")
+contact_monitor = true
+max_contacts_reported = 16
+script = ExtResource("1_51koj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wr12p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lwiy4")
+
+[node name="AudioImpact" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pumxb")
+max_distance = 1024.0

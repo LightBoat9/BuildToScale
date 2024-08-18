@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://jr582kmqgv6o"]
+
+[ext_resource type="Texture2D" uid="uid://bsft6cxx82b5o" path="res://icon.svg" id="1_2lshr"]
+
+[sub_resource type="GDScript" id="GDScript_n8lo7"]
+script/source = "extends RigidBody2D
+
+
+Vector2 scale = Vector2(1, 1)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	scale = scale
+	scale += Vector2(1, 1) * delta
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrn4e"]
+size = Vector2(128, 128)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fmj5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_403t0"]
+size = Vector2(608, 75.5)
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(530, 376)
+script = SubResource("GDScript_n8lo7")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_2lshr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_lrn4e")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(542, 192)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+texture = ExtResource("1_2lshr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource("RectangleShape2D_lrn4e")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(276, 476)
+physics_material_override = SubResource("PhysicsMaterial_fmj5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(264, 51.75)
+shape = SubResource("RectangleShape2D_403t0")

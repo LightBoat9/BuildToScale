@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwclsevcrvn10"]
+
+[ext_resource type="Script" path="res://props/allowed_area/allowed_area.gd" id="1_pw6ob"]
+
+[node name="AllowedArea" type="Node2D"]
+script = ExtResource("1_pw6ob")
+color = Color(0.298039, 0.686275, 0.431373, 0.392157)
+area = Vector2(16, 16)

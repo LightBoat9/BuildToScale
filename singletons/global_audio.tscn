@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://df4w7xucqdsw6"]
+
+[ext_resource type="Script" path="res://singletons/global_audio.gd" id="1_2w11s"]
+[ext_resource type="AudioStream" uid="uid://bxvak04da0mre" path="res://music.wav" id="2_jpg0s"]
+
+[node name="GlobalAudio" type="Node"]
+process_mode = 3
+script = ExtResource("1_2w11s")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jpg0s")
+volume_db = -9.837
+autoplay = true

@@ -1,0 +1,182 @@
+[gd_scene load_steps=7 format=3 uid="uid://dogabnp0pdn1g"]
+
+[ext_resource type="Script" path="res://ui/interface.gd" id="1_yoo1m"]
+[ext_resource type="Theme" uid="uid://begwy1l5xwmiv" path="res://ui/theme.tres" id="2_cwbwm"]
+[ext_resource type="AudioStream" uid="uid://c8wsoncireisw" path="res://ui/clear.wav" id="2_vdkf4"]
+[ext_resource type="AudioStream" uid="uid://bjnshlcdq78xm" path="res://ui/play.wav" id="3_pm6vg"]
+[ext_resource type="PackedScene" uid="uid://dbjn4ib0xi8xh" path="res://ui/music_toggle.tscn" id="5_jmlpj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8s7a"]
+bg_color = Color(0.965, 0.733, 0.306, 0.9)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.901961, 0.517647, 0.309804, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Interface" type="CanvasLayer" groups=["interface"]]
+script = ExtResource("1_yoo1m")
+
+[node name="AudioClear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vdkf4")
+
+[node name="AudioPlay" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pm6vg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_cwbwm")
+
+[node name="Buttons" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 322.0
+offset_bottom = 82.0
+theme_override_constants/separation = 16
+
+[node name="ReplayButton" type="Button" parent="Control/Buttons"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Play/Replay"
+
+[node name="ResetButton" type="Button" parent="Control/Buttons"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Reset"
+
+[node name="Clear" type="Button" parent="Control/Buttons"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Clear & Reset"
+
+[node name="MainMenu" type="Button" parent="Control/Buttons"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Level Select"
+
+[node name="PropContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -72.0
+offset_right = -16.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"PanelContainerTransparent"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Control/PropContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="LevelCompletePopup" type="PanelContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -192.0
+offset_right = 248.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j8s7a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/LevelCompletePopup"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/LevelCompletePopup/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Level Complete"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/LevelCompletePopup/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="ReplayLevelButton" type="Button" parent="Control/LevelCompletePopup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Replay Level"
+
+[node name="LevelSelectButton" type="Button" parent="Control/LevelCompletePopup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Level Select"
+
+[node name="NextLevelButton" type="Button" parent="Control/LevelCompletePopup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Next Level"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -188.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 55.0
+grow_horizontal = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+theme_type_variation = &"PanelContainerTransparent"
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Level 1"
+horizontal_alignment = 1
+
+[node name="MusicToggle" parent="Control/HBoxContainer" instance=ExtResource("5_jmlpj")]
+layout_mode = 2
+
+[connection signal="pressed" from="Control/Buttons/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="Control/Buttons/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Control/Buttons/Clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="Control/Buttons/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Control/LevelCompletePopup/VBoxContainer/HBoxContainer/ReplayLevelButton" to="." method="_on_replay_level_button_pressed"]
+[connection signal="pressed" from="Control/LevelCompletePopup/VBoxContainer/HBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="Control/LevelCompletePopup/VBoxContainer/HBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
